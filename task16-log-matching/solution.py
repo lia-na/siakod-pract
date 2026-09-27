@@ -19,7 +19,7 @@ Type "help", "copyright", "credits" or "license()" for more information.
 ...         # внутренний цикл:
 ...         for s in log2[1:]:  # до(m-1)раз внутри внешнего
 ...             d = abs(t - s)
-...             if d < best_dist # более поздний, если равны
+...             if d <= best_dist: # более поздний, если равны
 ...                 best_dist = d
 ...                 best_value = s
 ... 
