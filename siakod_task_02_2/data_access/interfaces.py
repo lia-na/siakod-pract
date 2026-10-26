@@ -12,20 +12,20 @@ Output = Callable[[str], None]
 class Query:
    # построитель 
 
-    sql: str
-    params: tuple[Any, ...] = ()
+    sql: str # текст запроса
+    params: tuple[Any, ...] = () #параметры к запросу 
 
 
 class IConnection(ABC):
-    # соединить с хранилищем
+    # соединить с хранилищем 
 
-    @abstractmethod
+    @abstractmethod # обязательное наличие execute
     def execute(self, sql: str, params: Sequence[Any] = ()) -> list[dict[str, Any]]:
         """ Настоящих драйверов нет, то запрос печатается """
 
     @abstractmethod
     def close(self) -> None:
-        """ закрыть """
+        """ закрыть - тоже обязательно """
 
 
 class IQueryBuilder(ABC):
@@ -49,7 +49,7 @@ class IQueryBuilder(ABC):
 
 
 class ITransaction(ABC):
-    """ транзакция """
+    """ транзакция, обяз пункты """
 
     @abstractmethod
     def begin(self) -> None: ...
