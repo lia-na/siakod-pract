@@ -1,8 +1,3 @@
-"""Общая часть всех построителей: хранение и проверка того, что запросил клиент.
-
-Каждое хранилище наследует этот класс и реализует ТОЛЬКО build() -
-то есть превращение собранных данных в запрос на своём «языке».
-"""
 from __future__ import annotations
 
 from typing import Any, Optional, Sequence
@@ -40,14 +35,11 @@ class BaseQueryBuilder(IQueryBuilder):
         self._limit = count
         return self
 
-    # --- помощники для наследников -------------------------------------
     def _check_ready(self) -> None:
         if self._table is None:
             raise ValueError("Сначала вызовите select(): не указана таблица")
 
     @staticmethod
     def _check_identifier(name: str) -> None:
-        # Имена таблиц/колонок вставляются в текст запроса, поэтому
-        # пускаем только безопасные имена (буквы, цифры, подчёркивание).
         if not name.isidentifier():
             raise ValueError(f"Недопустимое имя: {name!r}")
