@@ -1,11 +1,4 @@
 class BinaryHeap:
-    """Бинарная куча на массиве (list). Порядок задаётся функцией less.
-
-    less(a, b) == True означает: a должен быть ближе к вершине, чем b.
-    Min-куча: less = a < b (по умолчанию). Max-куча: less = a > b.
-    Для элемента с индексом i: родитель (i-1)//2, дети 2*i+1 и 2*i+2.
-    """
-
     def __init__(self, less=lambda a, b: a < b):
         self._a = []
         self._less = less
@@ -13,8 +6,7 @@ class BinaryHeap:
     def size(self):
         return len(self._a)
 
-    def peek(self):
-        """Вершина без удаления."""
+    def peek(self): #  Вершина без удаления
         if not self._a:
             raise IndexError("peek from empty heap")
         return self._a[0]
@@ -23,19 +15,17 @@ class BinaryHeap:
         self._a.append(x)
         self._sift_up(len(self._a) - 1)
 
-    def pop(self):
-        """Достать и вернуть вершину."""
+    def pop(self): # Достать и вернуть вершину
         if not self._a:
             raise IndexError("pop from empty heap")
         top = self._a[0]
-        last = self._a.pop()          # убираем последний элемент
-        if self._a:                   # если куча не опустела,
-            self._a[0] = last         # ставим его на вершину
-            self._sift_down(0)        # и опускаем на место
+        last = self._a.pop()   
+        if self._a:                  
+            self._a[0] = last       
+            self._sift_down(0)     
         return top
 
     def replace_top(self, x):
-        """Заменить вершину на x, вернуть старую вершину. Быстрее, чем pop+push."""
         if not self._a:
             raise IndexError("replace_top on empty heap")
         old = self._a[0]
@@ -45,7 +35,6 @@ class BinaryHeap:
 
     @classmethod
     def heapify(cls, items, less=lambda a, b: a < b):
-        """Построить кучу из списка по месту за O(n). Список items переиспользуется."""
         h = cls(less)
         h._a = items
         for i in range(len(items) // 2 - 1, -1, -1):  # от последнего родителя к корню
@@ -78,6 +67,5 @@ class BinaryHeap:
             i = best
 
     def is_valid(self):
-        """Проверка инварианта кучи (нужна для тестов)."""
         a = self._a
         return all(not self._less(a[i], a[(i - 1) // 2]) for i in range(1, len(a)))
