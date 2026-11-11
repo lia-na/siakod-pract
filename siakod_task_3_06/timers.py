@@ -2,14 +2,6 @@ from heap import BinaryHeap
 
 
 class TimerScheduler:
-    """Таймеры с переносом и отменой: min-куча назначений + словарь активных.
-
-    В куче лежат кортежи (at, seq, id): сравнение даёт сначала время,
-    при равенстве - порядок назначений (seq растёт с каждым SET).
-    В словаре active: id -> seq актуального назначения.
-    Старые назначения из кучи не удаляются: при извлечении их узнают по seq.
-    """
-
     def __init__(self):
         self.heap = BinaryHeap()
         self.active = {}
@@ -36,7 +28,6 @@ class TimerScheduler:
 
 
 class NaiveScheduler:
-    """Эталон: словарь активных назначений, при ADVANCE - фильтрация и сортировка."""
 
     def __init__(self):
         self.active = {}                  # id -> (at, seq)
