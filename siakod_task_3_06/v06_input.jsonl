@@ -1,0 +1,16 @@
+{"op":"ADVANCE","to":0}
+{"op":"SET","id":"A","at":10}
+{"op":"SET","id":"B","at":10}
+{"op":"SET","id":"A","at":20}
+{"op":"CANCEL","id":"B"}
+{"op":"ADVANCE","to":10}
+{"op":"SET","id":"B","at":12}
+{"op":"SET","id":"C","at":12}
+{"op":"ADVANCE","to":12}
+{"op":"SET","id":"A","at":12}
+{"op":"ADVANCE","to":12}
+{"op":"CANCEL","id":"missing"}
+{"op":"SET","id":"A","at":13}
+{"op":"SET","id":"A","at":14}
+{"op":"ADVANCE","to":20}
+{"op":"ADVANCE","to":20}
