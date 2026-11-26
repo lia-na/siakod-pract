@@ -11,7 +11,7 @@ class _Node:
 class CharTrie:
     def __init__(self):
         self._root = _Node()
-        self._size = 0
+        self._size = 0 # счетчик полей
 
     def __len__(self):
         return self._size
