@@ -1,0 +1,4 @@
+["texture_grass", "texture_glass", "texture_brass", "texture_stone", "texture_stand",
+ "sound_jump", "sound_bump", "sound_dump", "sound_jumps", "sound_run",
+ "model_tree", "model_free", "model_tred", "shader_main", "shader_mail",
+ "cmd_start", "cmd_stop", "cmd_step", "param_speed", "param_spend"]
